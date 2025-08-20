@@ -1,0 +1,31 @@
+name: manual trigger
+on:
+  workflow_dispatch:
+    inputs:
+      log_level:
+        description: 'Log level for the action'
+        required: true
+        default: 'info'
+        type: choice
+        options:
+          - debug
+          - info
+          - warning
+          - error
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+jobs:
+  manual_trigger_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get inputs
+        run: |
+          echo "Log Level: ${{ github.event.inputs.log_level }}"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          
