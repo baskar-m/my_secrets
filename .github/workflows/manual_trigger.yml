@@ -28,4 +28,5 @@ jobs:
         run: |
           echo "Log Level: ${{ github.event.inputs.log_level }}"
           echo "Environment: ${{ github.event.inputs.environment }}"
+          echo "working"
           
